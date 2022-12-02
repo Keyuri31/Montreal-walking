@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import logo from "./images/montreal-walking-logo.png";
+import SocialMediaIcon from "./SocialMediaIcon";
 
 const Footer = () => {
     return (
@@ -9,6 +10,9 @@ const Footer = () => {
                 <h3>About Us</h3>
                 <p>This website has been created by Keyuri Patel as a part of final project for here Full Stack Web Development Bootcamp at Concordia University.</p>
                 <span>&copy; 2022 Copyright</span>
+            </div>
+            <div>
+                <SocialMediaIcon/>
             </div>
             <div>
             <Ul>
@@ -27,22 +31,24 @@ const Ul = styled.ul`
     width:70%;
     float:right;
     line-height:25px;
+    margin-top:-20px;
 `;
 const Link1 = styled(Link)`
     display:flex;
     text-decoration:none;
     color:white;
-    margin-left:120px;
+    margin-left:-50px;
 
     img{
-        width:60%;
-        height:30%;
+    margin-left:-20px;
+        width:50%;
+        height:25%;
     }
 `;
  const Div = styled.div`
     width:100%;
     height:30vh;
-    border-top:3px solid #ff8000;
+    border-top:5px solid #ff8000;
     background-color: #480987;
     display:flex;
     flex-direction:row;
@@ -54,6 +60,8 @@ const Link1 = styled(Link)`
         h3{
             color:white;
             text-align:center;
+            font-weight:bold;
+            padding-bottom:10px;
         }
         p{
             color:white;

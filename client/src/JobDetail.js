@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "./Header";
 import styled from "styled-components";
-import Sidebar from "./Sidebar";
 import Footer from "./Footer";
+import ScrollButton from "./ScrollButton";
 
 const JobDetail = () => {
     const {_id}  = useParams();
@@ -57,60 +57,82 @@ const JobDetail = () => {
         <div>
             {console.log("state", state)}
             <Header/>
-            <Sidebar/>
             {state &&
+            <div>
             <Body>
                 <Wrapper>   
                     <div>
-                            <h3>Company Details</h3>
-                            <p>Company Name: {state.data.companyName}</p>
-                            <p>Address: {state.data.address}</p>
-                            <p>Postal Code: {state.data.postalCode}</p>
-                            <p>Email: {state.data.email}</p>
-                            <p>Contact No.: {state.data.number}</p>
-                            <button onClick={e => handleSubmit(e, state)}>LIKE</button>
+                            <Title>Company Details</Title>
+                            <p><span>Company Name:</span> {state.data.companyName}</p>
+                            <p><span>Address:</span> {state.data.address}</p>
+                            <p><span>Email:</span> <a href="">{state.data.email}</a></p>
+                            <p><span>Contact No.:</span> <a href={`tel:${state.data.number}`}>{state.data.number}</a></p>
+                            {/* <button onClick={e => handleSubmit(e, state)}>LIKE</button> */}
                             </div>
                             <div> 
-                                <h3>Job Details:</h3>
-                            <p>Job Title: {state.data.jobTitle}</p>
-                            <p>Description: {state.data.description}</p>
-                            <p>Salary: {state.data.salary}</p>
-                            <p>Job Type:</p> 
-                                <span>{state.data.jobType.fulltime}
-                                    {/* {if(state.data.jobType.fulltime === "fulltime") return "Fulltime"}   */}
-                                    </span>
-                                <span> {state.data.jobType.parttime}</span>
-                                <span>{state.data.jobType.temporary}</span>
-                                <span>{state.data.jobType.permanent}</span>
+                                <Title>Job Details:</Title>
+                            <p><span>Job Title:</span> {state.data.jobTitle}</p>
+                            <p><span>Description:</span> {state.data.description}</p>
+                            <p><span>Salary:</span> {state.data.salary}</p>
+                            <span>Job Type: </span>
+                                <p>{state.data.jobType.fulltime}</p>
+                                <p>{state.data.jobType.parttime}</p>
+                                <p>{state.data.jobType.permanent}</p>
+                                <p>{state.data.jobType.temporary}</p>
                                 
-                            <p>Benefits: </p>
-                                <span>{state.data.benefits.weekend}</span>
-                                <span>{state.data.benefits.overtime}</span>
-                                <span>{state.data.benefits.extrahours}</span>
+                            <span>Benefits: </span>
+                                <p>{state.data.benefits.weekend}</p>
+                                <p>{state.data.benefits.overtime}</p>
+                                <p>{state.data.benefits.extrahours}</p>
 
-                            <p>How to Apply: {state.data.howToApply}</p>
-                            </div> 
-                            </Wrapper>
-                            </Body>
-                        }
+                            <p><span>How to Apply:</span> {state.data.howToApply}</p>
+
+                    </div> 
+                </Wrapper>          
+            </Body>
+             </div>               
+            }
             <Footer/>
                         </div>
     );
 }
+const Title = styled.h3`
+    font-size:25px;
+    text-align:center;
+    font-weight:bold;
+    text-decoration:underline;
+`;
 const Wrapper = styled.div`
 display: flex;
 flex-direction:column;
 box-shadow:rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 border-radius: 20px;
-padding:15px;
+padding:25px 40px;
 background:white;
 margin:20px 0 20px 0;
+text-align:justify;
+line-height:30px;
+
+    span{
+        font-size:18px;
+        font-weight:600;
+    }
+    p{
+        font-size:16px;
+        font-weight:500;
+
+        a{
+            text-decoration:underline;
+        }
+    }
 `;
 
 const Body = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;  
-   
+    width:70%;
+    margin:20px 250px;
+    // height:80vh;
 `;
 export default JobDetail;

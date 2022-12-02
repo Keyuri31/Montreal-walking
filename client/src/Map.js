@@ -1,16 +1,7 @@
 import styled from 'styled-components';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import {
-  GoogleMap,
-  LoadScript,
-  MarkerClusterer,
-  Marker,
-  Circle,
-  InfoWindow,
-  Autocomplete,
-} from '@react-google-maps/api';
-
+import {GoogleMap, MarkerClusterer, Marker,InfoWindow} from '@react-google-maps/api';
 
 //MAP COMPONENT STYLE
 const containerStyle = {
@@ -25,7 +16,6 @@ const options = {
 
 //USER LOCATION
 const onLoad = (info) => {
-  console.log('onLoad infoBox: ', info);
 };
 
 const Map = ({alljobs, setAlljobs}) => {
@@ -35,7 +25,7 @@ const Map = ({alljobs, setAlljobs}) => {
   const handleShow = () => setShow(true);
   const [state, setState] = useState('');
   const [state1, setState1] = useState([]);
-  // console.log("st", state1)
+
   //USER LOCATION
   const [center, setCenter] = useState({
     lat: 45.508888,
@@ -53,25 +43,11 @@ const Map = ({alljobs, setAlljobs}) => {
       else{
         // console.log(data)
         setState1(data.data); 
-        console.log("data from map component",data.data)
-      }  
-      }
-      )
-  
+      }  })
   }, [])
-  //AUTOCOMPLETE COMPONENT
-  const [search, setSearch] = useState('');
-  const [array, setArray] = useState('');
-  const onSBLoad = (ref) => {
-    console.log('hello');
-    setArray(ref);
-    console.log(search);
-  };
-console.log("state", state)
+  
   return (
-
     <>
-     
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
@@ -84,7 +60,6 @@ console.log("state", state)
               state1.map((location, index) => {
                 return(
                 <div key={index}>
-                    {console.log("locationnnnnn",location.geometry)}
                   <Marker 
                     key={index}
                     position={location.geometry}
@@ -97,11 +72,10 @@ console.log("state", state)
                     {selectedMarker.index === index && (
                       <InfoWindow position={location} onLoad={onLoad}>
                         <StyledBox>
-                          <h3>{location.companyName}</h3>
-                          <h3>{location.address}</h3>
-                          <h3>{location.email}</h3>
-                          <a href={`tel:${location.number}`}>{location.number}</a>
-                          <button onClick={handleShow}>More Info</button>
+                          <h3><span>Name</span>: {location.companyName}</h3>
+                          <h3><span>Address</span>: {location.address}</h3>
+                          <h3><span>Email</span>: <a href="">{location.email}</a></h3>
+                          <h3><span>Contact No.</span>: <a href={`tel:${location.number}`}>{location.number}</a></h3>
                         </StyledBox>
                       </InfoWindow>
                     )}
@@ -111,27 +85,8 @@ console.log("state", state)
                 })
             }
           </MarkerClusterer>
-          {/* Child components, such as markers, info windows, etc. */}
           <></>
         </GoogleMap>
-      {/* </LoadScript> */}
-      {/* <Button variant='primary'>Launch demo modal</Button> */}
-
-      {/* <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>{state ? state.location.lng : ''}</Modal.Title>
-          <Modal.Title>{state ? state.location.lat : ''}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant='secondary' onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant='primary' onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
     </>
   );
 };
@@ -139,39 +94,18 @@ console.log("state", state)
 export default Map;
 
 const StyledBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height:300px;
-  width:300px;
-  padding: 8px;
-  background-color: white;
-  border: 2px solid black;
+display: flex;
+flex-direction: column;
+align-items: center;
+height:120px;
+width:320px;
+padding: 8px;
+text-align:justify;
+background-color: white;
+border: 2px solid #480987;
+font-size:15px;
+
+  span{
+      text-decoration:underline;
+  }
 `;
-
-// import { useState, useRef, useEffect } from "react";
-// import styled from "styled-components";
-
-// const Map = ({zoom, center}) => {
-    
-//     const ref = useRef(null);
-// const [map, setMap] = useState();
-
-// useEffect(() => {
-//     new window.google.maps.Map(ref.current, {
-//         center,
-//         zoom,
-//       });
-// }, [ref, map]);
-
-//     return (
-//         <Div >
-//         {/* {console.log("hello")} */}
-//         <div ref={ref} id={map} style={{ height:'100vh' }}/>
-//         </Div>
-//     );
-// }
-//  const Div=styled.div`
-//     height:100vh;
-//  `;
-// export default Map;

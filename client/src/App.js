@@ -6,9 +6,7 @@ import UserType from "./UserType";
 import GlobalStyles from "./Globalstyles";
 import Homepage from "./Homepage";
 import Recuiter from "./Recuiter";
-import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useState } from "react";
 import JobPostForm from "./JobPostForm";
 import AllJobs from "./AllJobs";
 import TodayJobs from "./TodayJobs";
@@ -17,17 +15,11 @@ import JobDetail from "./JobDetail";
 import FAQ from "./FAQ";
 import ContactUs from "./ContactUs";
 import Sidebar from "./Sidebar";
-import styled from "styled-components";
-import ContactForm from "./ContactForm";
 import Resume from "./Resume";
 
 const App = () => {
   const {user,isAuthenticated} = useAuth0();
-  const[state, setState] = useState("");
-  // console.log("appuser",user)
 
-  
-  
   return (
    <>
     <GlobalStyles />
@@ -56,7 +48,5 @@ const App = () => {
    </>
   );
 }
-const Wrapper=styled.div`
-  // display:flex;
-`;
+
 export default App;

@@ -9,10 +9,10 @@ body{
   #root{
     margin: 0;
     padding: 0;
-    height:100vh;
+    height:100%;
     font-family: Open-Sans, Helvetica, Sans-Serif;
     background-image:url(${image});
-    min-height:100%;
+    // min-height:100%;
     // overflow:hidden;
     background-size:cover;
     box-sizing:border-box;

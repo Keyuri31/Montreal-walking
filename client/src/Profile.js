@@ -67,7 +67,6 @@ console.log("authne", isAuthenticated)
   // console.log("state", state)
   return (
      <>
-     <Header/>
     {isAuthenticated && (
       <div>
         <img src={user.picture} alt={user.name} />

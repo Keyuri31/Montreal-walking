@@ -3,36 +3,36 @@ import styled from "styled-components";
 import { Link} from "react-router-dom";
 import logo from "./images/montreal-walking-logo.png";
 
-const Header = () => {
+const Header1 = () => {
     const {isAuthenticated} = useAuth0();
     return (
         
         <>
-            <Header1>
+            <Header2>
                 <Link1 to="/user"><img src ={logo} alt="Logo not found"/></Link1>
                 {isAuthenticated &&
-                <div>
-                    <Link2 to={"/alljobs"}>All Jobs</Link2>
-                    <Link2 to={"/todayjobs"}>Today's Jobs</Link2>
-                    <Link2 to={"/faq"}>FAQ</Link2>
-                    <Link2 to={"/contact"}>Contact Us</Link2>
+                <Div>
+                    <Link2 to={"/form"}>Add Job</Link2>
+                    <Link2 to={"/profile"}>Profile</Link2>
                     <Link2 to="/logout">Logout</Link2>
-                    </div>
+                    </Div>
                     }
-            </Header1>
+            </Header2>
         </>
     );
 }
-
-const Header1 = styled.header`
-height: 120px;
+const Div = styled.div`
+    // height:100vh;
+`;
+const Header2 = styled.header`
+height: 100px;
 background-color: #480987;
 color:white;
 border-bottom:4px solid #ff8000;
 
 div{
     margin-top:-70px;
-    margin-left:600px;
+    margin-left:900px;
 }
 `;
 const Link1 = styled(Link)`
@@ -64,4 +64,4 @@ text-decoration:none;
     // font-weight:800;
 }
 `;
-export default Header;
+export default Header1;

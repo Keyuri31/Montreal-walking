@@ -1,18 +1,8 @@
 import styled from 'styled-components';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import {
-  GoogleMap,
-  LoadScript,
-  MarkerClusterer,
-  Marker,
-  Circle,
-  InfoWindow,
-  Autocomplete,
-} from '@react-google-maps/api';
+import {GoogleMap,MarkerClusterer,Marker,InfoWindow} from '@react-google-maps/api';
 
-//LIBRARIES
-// const library = ['places'];
 //MAP COMPONENT STYLE
 const containerStyle = {
   width: '100%',
@@ -26,7 +16,6 @@ const options = {
 
 //USER LOCATION
 const onLoad = (info) => {
-  console.log('onLoad infoBox: ', info);
 };
 
 const TodayMap = ({today, setToday}) => {
@@ -36,7 +25,6 @@ const TodayMap = ({today, setToday}) => {
   const handleShow = () => setShow(true);
   const [state, setState] = useState('');
   const [state1, setState1] = useState([]);
-  // console.log("st", state1)
   //USER LOCATION
   const [center, setCenter] = useState({
     lat: 45.508888,
@@ -46,48 +34,32 @@ const TodayMap = ({today, setToday}) => {
   let todaydata;
   const date = new Date();
   const year = date.getFullYear();
-const month = String(date.getMonth() + 1).padStart(2, '0');
-const day = String(date.getDate()).padStart(2, '0');
-const currentdate = [year,month,day].join('-');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const currentdate = [year,month,day].join('-'); //current day date in the format of yyyy-mm-dd
 
+  //fetch all jobs
     useEffect(()=>{
         fetch (`/api/jobs`)
           .then(res=> res.json())
           .then(data=> {
             if(data.status === 400 || data.status === 500){
-            //   navigate('/error');
               throw new Error(data.message);
           }   
           else{
             todaydata= data.data;
             todaydata.map((item) => {
-                // console.log("item date", item.date)
                 if(item.date === currentdate){
-                    myArray.push(item);
-                    
+                    myArray.push(item);    
                 }
             })
             setState1(myArray);
-            setToday(myArray);
-             
-          }  
-          }
-          )
-      
+            setToday(myArray);      
+          }})
       }, [])
-  //AUTOCOMPLETE COMPONENT
-  const [search, setSearch] = useState('');
-  const [array, setArray] = useState('');
-  const onSBLoad = (ref) => {
-    console.log('hello');
-    setArray(ref);
-    console.log(search);
-  };
-console.log("state", state)
-  return (
 
-    <>
-      
+  return (
+    <> 
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
@@ -96,14 +68,12 @@ console.log("state", state)
         >       
           <MarkerClusterer options={options}>
             {(clusterer) =>
-            
               state1.map((location, index) => {
                 return(
                 <div key={index}>
-                    {console.log("locationnnnnn",location.geometry)}
                   <Marker 
                     key={index}
-                    position={location.geometry}
+                    position={location.geometry} //set the position on the map based on the geometry available from db
                     clusterer={clusterer}
                     onClick={() => {
                       setToday([location])
@@ -111,13 +81,12 @@ console.log("state", state)
                     }}
                   >
                     {selectedMarker.index === index && (
-                      <InfoWindow position={location} onLoad={onLoad}>
-                        <StyledBox>
-                          <h3>{location.companyName}</h3>
-                          <h3>{location.address}</h3>
-                          <h3>{location.email}</h3>
-                          <a href={`tel:${location.number}`}>{location.number}</a>
-                          <button onClick={handleShow}>More Info</button>
+                      <InfoWindow position={location} onLoad={onLoad}> 
+                        <StyledBox> 
+                          <h3><span>Name</span>: {location.companyName}</h3>
+                          <h3><span>Address</span>: {location.address}</h3>
+                          <h3><span>Email</span>: <a href="">{location.email}</a></h3>
+                          <h3><span>Contact No.</span>: <a href={`tel:${location.number}`}>{location.number}</a></h3>
                         </StyledBox>
                       </InfoWindow>
                     )}
@@ -127,10 +96,7 @@ console.log("state", state)
                 })
             }
           </MarkerClusterer>
-          {/* Child components, such as markers, info windows, etc. */}
-          <></>
-        </GoogleMap>
-      
+        </GoogleMap>      
     </>
   );
 };
@@ -141,9 +107,15 @@ const StyledBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height:300px;
-  width:300px;
+  height:120px;
+  width:320px;
   padding: 8px;
+  text-align:justify;
   background-color: white;
-  border: 2px solid black;
+  border: 2px solid #480987;
+  font-size:15px;
+
+    span{
+        text-decoration:underline;
+    }
 `;

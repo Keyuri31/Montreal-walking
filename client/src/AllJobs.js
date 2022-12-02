@@ -3,59 +3,41 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from "./Header";
 import Map from "./Map";
-import Sidebar from "./Sidebar";
 import Footer from "./Footer";
-import Loader from "./Loader";
 import Spinner from "./Spinner";
 import { Wrapper } from "@googlemaps/react-wrapper";
-import { BsFillArrowUpCircleFill } from "react-icons/bs";
+import ScrollButton from "./ScrollButton";
 
-const api_key = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
-// console.log(api_key)   
+//get API key of google map
+const api_key = process.env.REACT_APP_GOOGLE_MAP_API_KEY; 
 
+//returns all jobs from database
 const AllJobs = () => {
     const [alljobs, setAlljobs] = useState(null);
-    const [showButton, setShowButton] = useState(false);
     const navigate = useNavigate();
-    const center = { lat: 45.508888, lng: -73.561668 };
-  const zoom = 4;
+    const center = { lat: 45.508888, lng: -73.561668 }; //coordinates of Montreal to view map
+    const zoom = 4;
     
+    //fetch all jobs
     useEffect(()=>{
         fetch (`/api/jobs`)
           .then(res=> res.json())
           .then(data=> {
             if(data.status === 400 || data.status === 500){
-            //   navigate('/error');
               throw new Error(data.message);
           }   
           else{
-            // console.log(data)
             setAlljobs(data.data); 
           }  
-          }
-          )
-      
+          })
       }, [])
-{console.log("alljobs", alljobs)}
-      useEffect(() => {
-        const handleScrollButtonVisibility = () => {
-          window.pageYOffset > 250 ? setShowButton(true) : setShowButton(false);
-        };
-        window.addEventListener("scroll", handleScrollButtonVisibility);
-    
-        return () => {
-          window.removeEventListener("scroll", handleScrollButtonVisibility);
-        };
-      }, []);
-    
-      const handleScrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      };
 
+      //function to render google map
       const render = (status) => {
         return <h1>{status}</h1>;
       };
 
+      //function to navigate to job details page
       const handleClick1 = (e,id)=>{
         e.preventDefault();
         e.stopPropagation();
@@ -64,48 +46,34 @@ const AllJobs = () => {
     }
     return (
         <>
-        {!alljobs ? 
-        <Spinner/>
-        : 
-        <StyledDiv>
+        {!alljobs ?  <Spinner/>
+        : <StyledDiv>
                     <Header/>
-                    <Sidebar />
                     <Main>
                         <Container>
-                    {alljobs.map((item,index) => {
-                        {console.log("itemmmmm",item)}
+                        {alljobs.map((item,index) => {
                         return(
-                        <Div key={index+1} onClick={(e)=>{handleClick1(e,item._id)}}>
-                            <p>Company Name: {item.companyName}</p>
-                            <p>Address: {item.address}</p>
-                            {/* <p>{item.postalCode}</p> */}
-                            <p>{item.email}</p>
+                        <Div key={index+1} >
+                            <p><span>Company Name:</span> {item.companyName}</p>
+                            <p><span>Address:</span> {item.address}</p>
+                            <p><span>Email:</span> {item.email}</p>
                             <hr></hr>
-                            <p>{item.jobTitle}</p>
-                            <p>{item.description}</p>
-                            <p>Salary: {item.salary}</p>
-                            {/* <button onClick={(e)=>{handleClick1(e,item._id)}}>More Info</button> */}
+                            <p><span>Job Title:</span> {item.jobTitle}</p>
+                            {/* <p><span>Detail:</span> {item.description}</p> */}
+                            <p><span>Salary:</span> {item.salary}</p>
+                            <button onClick={(e)=>{handleClick1(e,item._id)}}>More Info</button>
                         </Div>
-                        )
-                        })}
+                        )})}
                         </Container>
                         <Container>
-                            <Div>
+                            <Div1>
                               <Wrapper apiKey={api_key} render={render} >
                                 <Map zoom={zoom} center={center} alljobs={alljobs} setAlljobs={setAlljobs}/>
                             </Wrapper>
                             
-                            </Div>
+                            </Div1>
                         </Container>
-                        
-                        {showButton && (
-                            <div className={`scrollToTop`}>
-                            <button onClick={handleScrollToTop}>
-                                {/* <img src="/icons/new-up-arrow.png" /> */}
-                                <BsFillArrowUpCircleFill />
-                            </button>
-                            </div>
-                        )}
+                        <ScrollButton/>
                     </Main>
                     <Footer/>
         </StyledDiv>
@@ -113,39 +81,80 @@ const AllJobs = () => {
         </>
     );
 }
+const Div1 = styled.div`
+    border-radius:12px;
+    background:white;
+    padding:2px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-content:center;
+ `;
 const Container = styled.div`
     display:flex;
     flex-direction:column;
     width:50%;
+    padding:20px;
 `;
 const Main= styled.div`
     display:flex;
     flex-direction:row;
     width:100%;
 
-    button {
-        background-color: transparent;
-        border: none;
-        font-size: 1.7rem;
-        color: #ff8000;
-        position: fixed;
-        right: 7px;
-        bottom: 3%;
-        z-index: 50;
-        cursor: pointer;
-        padding: 4px;
-      }
+    
 `;
 const StyledDiv = styled.div`
     width:100%;
     // overflow-y: scroll;
 `;
  const Div= styled.div`
-    border:2px solid black;
+ background:white;
+ padding:20px;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-content:center;
+ border-radius:12px;
+ margin:5px 0;
+
+    span{
+      font-size:15px;
+      font-weight:600;
+  }
+  p{
+      font-size:15px;
+      font-weight:500;
+  }
+  hr{
+      margin:5px 0;
+      background-color:#ff8000;
+  }
+
+  button{
     display:flex;
-    flex-direction:column;
-    // width:48%;
-    justify-content:center;
-    align-content:center;
+    justify-content: center;
+    background-color: #ff8000;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 150px;
+    color: white;
+    font-weight:bold;
+    font-size:15px;
+    font-family: 'Times New Roman', Times, serif;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    letter-spacing: 5px;
+    margin-top: 20px;
+    margin-bottom:10px;
+    &:hover:enabled {
+        cursor: pointer;
+        transition: all 0.5s ease;
+        transform: scale(1.05);
+        background-color: white;
+        color:#400080;
+        font-weignt:bold;
+    }
+    
+  }
  `;
 export default AllJobs;

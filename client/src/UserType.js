@@ -7,12 +7,9 @@ import styled from "styled-components";
 const UserType = () => {
     const { user} = useAuth0();
     const [type, setType]= useState("");
-    const [state, setState] = useState(null);
     const navigate = useNavigate();
-    // console.log("usertype",user)
 
     const handleChange = (value) => {
-        console.log("value", value)
         setType(value);
 }
 
@@ -29,7 +26,6 @@ const UserType = () => {
                   })
                   .then(res => res.json())
                   .then((data) => {
-                      // console.log(data)
                       console.log("type",type)
                       if(type === "usertype"){
                             navigate('/user');
@@ -41,57 +37,119 @@ const UserType = () => {
                       window.alert(error);
                   })
                 }
-                
-             
-            // fetch("/api/login", {
-            //     method: "PATCH",
-            //     headers: {
-            //         "Accept": "application/json",
-            //         "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify({user,type})
-            // })
-            // .then(res => res.json())
-            // .then((data) => {
-            //     // console.log(data)
-            // })
-            // .catch((error) => {
-            //     window.alert(error);
-            // })
-            // console.log("type", type)
-            // // console.log("target value",e.target.name)
-            // if(type === "usertype"){
-            //     navigate('/user');
-            // }else{
-            //     navigate('/recuiter');
-            // }
-
-            //get all the login user details
-  
-  // console.log("statte dtata",state)
-
-
-  
-      //check if the current user login already exist in the db if not create one new entry into db
-      
-       
-      
-        console.log(user)
+ 
     return (
-        <Div>
+        <Body>
+            <Container>
+            <Div>
+                <h3>Want to a EMPLOYER or EMPLOYEE?</h3>
             <form onSubmit={e=>handleSubmit(e)}>
-                <input type="radio" name="usertype" value={type} onChange={(e)=>{handleChange(e.target.name)}}/>Job Seeker
-                <input type="radio" name="recuitertype" value={type} onChange={(e)=>{handleChange(e.target.name)}}/>Recuiter
-                <button type="submit">Submit</button>
+                <First>
+                    <Second>
+                        <input type="radio" name="usertype" value={type} onChange={(e)=>{handleChange(e.target.name)}}/>
+                        <label htmlFor="name">Job Seeker</label>
+                    </Second>
+                    <Second>
+                        <input type="radio" name="recuitertype" value={type} onChange={(e)=>{handleChange(e.target.name)}}/>
+                        <label htmlFor="name">Recuiter</label>
+                    </Second>
+                </First>
+                <First>
+                <Button type="submit">Submit</Button>
+                </First>
             </form>
         </Div>
+            </Container>
+        </Body>
+        
     );
 }
- const Div = styled.div`
- background-image:url(${image});
- min-height:100%;
- overflow:hidden;
- background-size:cover;
- box-sizing:border-box;
- `;
+const First = styled.div`
+display:flex;
+flex-direction:row;
+`;
+const Second = styled.div`
+display:flex;
+flex-direction:row;
+margin:0 20px;
+input{
+    margin:0 7px;
+}
+`;
+const Div = styled.div`
+color:white;
+font-family:"Times New Roman";
+text-align:center;
+form{
+    // display:flex;
+    // flex-direction:row;
+
+}
+h3{
+    margin-top:20px;
+    font-size:25px;
+    font-weight:200;
+    font-style:italic;
+}
+
+label{
+    font-size:20px;
+    font-weight:200;
+    font-style:italic;
+}
+`;
+const Body = styled.div`
+display: flex;
+align-items: center;
+justify-content: center; 
+height:100vh; 
+`;
+const Button = styled.button`
+background-color: white;
+border: none;
+padding: 10px;
+border-radius: 5px;
+width: 60%;
+color:  #400080;
+font-family: 'Times New Roman';
+box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+letter-spacing: 5px;
+margin-top: 30px;
+margin-bottom:20px;
+margin-left:20px;
+font-weight:bold;
+font-size:15px;
+
+&:hover:enabled {
+    cursor: pointer;
+    transition: all 0.5s ease;
+    transform: scale(1.05);
+    background-color: #ff8000;
+    color:white;
+    font-weight:bold;
+    font-size:15px;
+}
+&:disabled {
+    opacity: 30%;
+    cursor: not-allowed;
+}
+&:active:enabled {
+    transition: all 0.5s ease;
+    transform: scale(1);
+}
+`;
+
+const Container = styled.div`
+display:flex;
+justify-content:center;
+align-content:center;
+width:50%;
+background-color: #400080; 
+border-radius:20px;
+
+&:hover{
+    transition: all 0.5s ease;
+    transform: scale(1.05);
+}
+`;
 export default UserType;
