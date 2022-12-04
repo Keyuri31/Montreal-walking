@@ -13,7 +13,7 @@ const options = {
   };
 
   const client = new MongoClient(MONGO_URI, options);
-  
+  // get the toatl count of jobs in the jobs collection
 const getTotalCount = async(req, res) => {
     
     try{

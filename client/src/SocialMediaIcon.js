@@ -8,7 +8,7 @@ import {
   } from "@fortawesome/free-brands-svg-icons";
 import styled from "styled-components";
 
-//display social media 
+//display social media icons and links
 const SocialMediaIcon = () => {
     return (
         <Div class="social-container">

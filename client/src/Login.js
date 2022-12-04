@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Logout from "./Logout";
 import logo from "./images/logo.png";
 
+//takes to the login and signin page from Auth0
 const Login = () => {
     const { loginWithRedirect, isAuthenticated, user } = useAuth0();
 

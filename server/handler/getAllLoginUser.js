@@ -20,9 +20,8 @@ const getAllLoginUser = async(req, res) => {
       await client.connect();
       const db = client.db("final-project");
     
-       
-            const allUser = await db.collection("login").find().toArray();
-            
+            //get all user that has logged in
+            const allUser = await db.collection("login").find().toArray(); 
             res.status(200).json({ status: 200, data:allUser})
        
 

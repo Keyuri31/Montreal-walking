@@ -14,10 +14,11 @@ const options = {
   };
 
   const client = new MongoClient(MONGO_URI, options);
-  
+  // post new job
 const postJob = async(req, res) => {
     const {email, loginemail, address} = req.body;
     const {parttime,fulltime,temporary,permanent,weekend,overtime,extrahours,...rest} = req.body
+    //use of opencage to get the coordinates from the address
     const requestObj = {
      key: process.env.OPENCAGE_API_KEY,
      q: address,
@@ -51,10 +52,8 @@ const postJob = async(req, res) => {
 
         if(!loginemail.includes("."))
              return res.status(400).json({status:400, message: "Invalid email address."})
-
-
-             
-            const jobpost = await db.collection("jobs").insertOne(newjob); 
+   
+            const jobpost = await db.collection("jobs").insertOne(newjob); //insert the job into the db 
              return res.status(200).json({ status: 200, data:  jobpost})
             
   } catch(err){

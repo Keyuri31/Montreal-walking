@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import logo from "./images/montreal-walking-logo.png";
 import SocialMediaIcon from "./SocialMediaIcon";
 
+//footer for job seeker side that conatins 3 sections
+//1 about us
+//2 socialmedia links
+//3 links to go to different pages of job seeker side
 const Footer = () => {
     return (
         <Div>

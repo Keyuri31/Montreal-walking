@@ -2,7 +2,10 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import logo from "./images/montreal-walking-logo.png";
 import SocialMediaIcon from "./SocialMediaIcon";
-
+//footer for recuiter side that conatins 3 sections
+//1 about us
+//2 socialmedia links
+//3 links to go to different pages of recuiter side
 const Footer1 = () => {
     return (
         <Div>

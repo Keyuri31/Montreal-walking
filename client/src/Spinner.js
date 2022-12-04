@@ -7,14 +7,13 @@ const override = {
   borderColor: "red",
   width:"20%",
 };
-
+//loader to display on state mount
 const Spinner = () => {
     let [loading, setLoading] = useState(true);
   let [color, setColor] = useState("#480987");
 
   return (
     <div className="sweet-loading">
-      {/* <button onClick={() => setLoading(!loading)}>Toggle Loader</button> */}
       <div  onChange={(input) => setColor(input.target.value)} />
 
       <GridLoader

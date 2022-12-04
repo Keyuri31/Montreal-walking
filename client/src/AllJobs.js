@@ -65,7 +65,8 @@ const AllJobs = () => {
                         </Div>
                         )})}
                         </Container>
-                        <Container>
+                        {/* display map */}
+                        <Container>  
                             <Div1>
                               <Wrapper apiKey={api_key} render={render} >
                                 <Map zoom={zoom} center={center} alljobs={alljobs} setAlljobs={setAlljobs}/>

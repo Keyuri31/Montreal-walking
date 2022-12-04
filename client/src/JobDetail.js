@@ -5,10 +5,12 @@ import styled from "styled-components";
 import Footer from "./Footer";
 import ScrollButton from "./ScrollButton";
 
+//function to display the details of the job when clicked from the AllJobs component or the TodaysJobs component
 const JobDetail = () => {
     const {_id}  = useParams();
     const [state, setState] = useState(null);
      
+    //fetch job with specified id and display its detail in the component
     useEffect(()=>{
         fetch (`/api/userjob/${_id}`)
           .then(res=> res.json())
@@ -24,7 +26,7 @@ const JobDetail = () => {
                 window.alert(error);
              })
       },[])
-      
+
     return (
         <div>
             <Header/>

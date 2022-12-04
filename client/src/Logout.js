@@ -1,8 +1,8 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import logo from "./images/logo.png";
 
+//
 const Logout = () => {
     const { logout, isAuthenticated } = useAuth0();
     const navigate = useNavigate();
@@ -12,9 +12,10 @@ const Logout = () => {
             <Container>
                 { isAuthenticated && 
                 <Div>
-                    {/* <img src ={logo} alt="Logo not found"/> */}
                     <p>Are you sure you want to logout?</p>
-                    <Button onClick={() => logout({ returnTo: window.location.origin })}>YES</Button>
+                    {/* onclick logs user from the site */}
+                    <Button onClick={() => logout({ returnTo: window.location.origin })}>YES</Button> 
+                    {/* redirect to the UserType component */}
                     <Button onClick={()=> navigate('/')}>NO</Button>
                 </Div>
                 }
@@ -23,7 +24,6 @@ const Logout = () => {
     );
 }
 const Div = styled.div`
-    // display:flex;
     color:white;
 
     img{

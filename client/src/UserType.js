@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
 import styled from "styled-components";
-
+//function is used to know how user wants to login as a RECUITER or a JOB SEEKER
 const UserType = () => {
     const { user} = useAuth0();
     const [type, setType]= useState("");
@@ -11,7 +11,7 @@ const UserType = () => {
     const handleChange = (value) => {
         setType(value);
 }
-
+    //post their usertype to the db
     const handleSubmit = (e) => {
             e.preventDefault();
             

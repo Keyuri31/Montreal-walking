@@ -25,7 +25,7 @@ const updateJob = async (req, res) => {
     const findone = await db.collection("jobs").findOne({ _id });
     const query = {"_id":_id};
     const newValues = { $set: newjob}
-    const updatedJob = await db.collection("jobs").updateOne(query, newValues);
+    const updatedJob = await db.collection("jobs").updateOne(query, newValues);//update the jobs with specified id
     return res.status(200).json({status: 200, message: "Update Successful", dbResponse: updatedJob});
 
   } catch (err) {

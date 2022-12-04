@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link} from "react-router-dom";
 import logo from "./images/montreal-walking-logo.png";
 
+//header bar for job seeker side which conatins logo and the links to navigate to different pages
 const Header = () => {
     const {isAuthenticated} = useAuth0();
     return (

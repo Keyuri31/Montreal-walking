@@ -17,7 +17,6 @@ const{getJobById} = require('./handler/getJobById');
 const{getAllUserJobs} = require('./handler/getAllUserJobs');
 const{getUserJobById} = require('./handler/getUserJobById');
 const{getTotalCount} = require('./handler/getTotalCount');
-const{getCountOfJobByUser} = require('./handler/getCountOfJobByUser');
 
 const port = 8000;
 express()
@@ -44,7 +43,6 @@ express()
 .patch('/api/job/:_id', updateJob)
 .get('/api/job/:_id', getJobById)
 .get('/api/totalcount',getTotalCount)
-.get('/api/countbyuser',getCountOfJobByUser)
 
 //user endpoints
 .get('/api/jobs', getAllUserJobs)

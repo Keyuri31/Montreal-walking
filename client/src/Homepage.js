@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Footer from "./Footer";
 import logo from "./images/logo.png";
 
+//FE job seeker homepage
 const Homepage = () => {
     const { user, isAuthenticated} = useAuth0();
 

@@ -5,13 +5,14 @@ import Footer1 from "./Footer1";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ScrollButton from "./ScrollButton";
-
+//home page for the recuiter(admin side)
 const Recuiter = () => {
     const { user, isAuthenticated} = useAuth0();
     const [state, setState] = useState("");
     const [state1, setState1] = useState("");
     const navigate=useNavigate();
 
+    //fetches the total number of jobs that are added to this site
     useEffect(()=>{
       fetch (`/api/totalcount`)
         .then(res=> res.json())
@@ -19,7 +20,7 @@ const Recuiter = () => {
           setState(data.data)
         })
     },[])
-  
+  //fetches the total number of jobs that are added by the current login user
     useEffect(()=>{
       isAuthenticated && 
       fetch (`/api/jobs/${user.email}`)
@@ -28,12 +29,13 @@ const Recuiter = () => {
           setState1(data.data.length)
         })
     },[isAuthenticated])
-  
+    //redirects to the alljobs page of the admin side that displays all the details of the job but can't update or delete it
+    //just to view all jobs
     const handleSubmit = (e) => {
       e.preventDefault();
       navigate('/adminalljobs')
   }
-
+  //rdeirects to the profile page of the current login user that includes the details of the job with update and delete options
   const handleSubmit1 = (e) => {
     e.preventDefault();
     navigate('/profile')

@@ -7,7 +7,7 @@ import Header1 from "./Header1";
 import ScrollButton from "./ScrollButton";
 import Spinner from "./Spinner";
 import styled from "styled-components";
-
+//displays the jobs that are added by the cuurent login user
 const Profile = () => {
   const { user, isAuthenticated} = useAuth0();
   const[state, setState] = useState("");
@@ -22,6 +22,7 @@ const Profile = () => {
       })
   },[isAuthenticated])
 
+  //deleted the job that was added by the current user with specified id
   const handleSubmit = ((e,id) =>{
     e.preventDefault();
     fetch (`/api/jobs/${id}`,{
@@ -33,6 +34,7 @@ const Profile = () => {
             window.alert("Successfully deleted")
       })
   })
+  //function that navigates to the update form componenets
   const handleSubmit1 = ((e,id) => {
     e.preventDefault();
     navigate(`/updateform/${id}`);

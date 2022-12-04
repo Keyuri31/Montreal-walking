@@ -21,8 +21,8 @@ const getJobs = async(req, res) => {
       await client.connect();
       const db = client.db("final-project");
     
-            const alljobs = await db.collection("jobs").find({loginemail:loginemail}).toArray();
-            const total = await db.collection("jobs").find({loginemail:loginemail}).count();
+            const alljobs = await db.collection("jobs").find({loginemail:loginemail}).toArray();//get all jobs that matches the login email id with the current login user
+            const total = await db.collection("jobs").find({loginemail:loginemail}).count();//get the total count of jobs that matches the login email id with the current login user 
             res.status(200).json({ status: 200, data:alljobs,total})
        
 

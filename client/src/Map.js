@@ -18,6 +18,7 @@ const options = {
 const onLoad = (info) => {
 };
 
+//display the pinned up location on map with the address provided in the job description
 const Map = ({alljobs, setAlljobs}) => {
   const [selectedMarker, setSelectedMarker] = useState([]);
   const [state1, setState1] = useState([]);

@@ -13,7 +13,7 @@ const options = {
   };
 
   const client = new MongoClient(MONGO_URI, options);
-  
+  //get the user with the specified id
 const getUserJobById = async(req, res) => {
     const {_id} = req.params;
  

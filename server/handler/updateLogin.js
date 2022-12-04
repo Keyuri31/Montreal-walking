@@ -23,13 +23,13 @@ const updateLogin = async(req, res) => {
       const db = client.db("final-project");
     
        
-            const findone = await db.collection("login").findOne({"user.email":user.email});
+            const findone = await db.collection("login").findOne({"user.email":user.email});//find the user with loginemail 
             if(findone === null){
-                res.status(400).json({status:404, message:"email doesn't match"})
+                res.status(400).json({status:404, message:"email doesn't match"}) //user does not exist
             }
           else{
             
-            const update = await db.collection("login").updateOne(query, newVlaues); 
+            const update = await db.collection("login").updateOne(query, newVlaues); // if user exist then update its type
             res.status(200).json({ status: 200, data:update})
           }
 

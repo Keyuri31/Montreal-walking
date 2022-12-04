@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { useState } from "react";
 
+//contact us form that just display a success message on form submission
 const ContactUs = () => {
     const [formStatus, setFormStatus] = useState('Send')
     const onSubmit = (e) => {

@@ -1,6 +1,3 @@
-
-"use strict";
-
 const { MongoClient } = require("mongodb");
 
 //access the database
@@ -18,12 +15,12 @@ const deleteJob = async(req, res) => {
     const {_id} = req.params;
   
     try{
-      await client.connect();
-      const db = client.db("final-project");
+      await client.connect(); //connect to db
+      const db = client.db("final-project"); //connect to my project
     
-      const findone = await db.collection("jobs").findOne({_id:_id});
+      const findone = await db.collection("jobs").findOne({_id:_id}); //finding the jobs with id 
       
-        const deleteone = await db.collection("jobs").deleteOne({_id:_id})
+        const deleteone = await db.collection("jobs").deleteOne({_id:_id}) // deleting the job with specified id
             res.status(200).json({ status: 200, data:deleteone})
        
 

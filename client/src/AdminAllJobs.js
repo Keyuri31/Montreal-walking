@@ -10,7 +10,7 @@ const AdminAllJobs = () => {
     const [alljobs, setAlljobs] = useState(null);
     const {isAuthenticated} = useAuth0();
 
-     //fetch all jobs
+     //fetch all jobs to display on FE of admin
      useEffect(()=>{
         fetch (`/api/jobs`)
           .then(res=> res.json())
@@ -20,8 +20,7 @@ const AdminAllJobs = () => {
           }   
           else{
             setAlljobs(data.data); 
-          }  
-          })
+          }})
       }, [])
 
     return (
@@ -52,7 +51,6 @@ const AdminAllJobs = () => {
         
         {!alljobs ? 
         <Spinner/>
-        // <h1>Loading...</h1> 
         : 
           alljobs && alljobs.map((item,index) => {
             return(

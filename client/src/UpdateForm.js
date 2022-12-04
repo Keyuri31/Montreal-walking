@@ -5,11 +5,13 @@ import Header1 from "./Header1";
 import ScrollButton from "./ScrollButton";
 import Footer1 from "./Footer1";
 
+//function is used by the recuiter to update any changes to the jobs that they have added
 const UpdateForm = () => {
     const {_id} = useParams();
     const [updatejob, setUpdateJob] = useState(null);
     const navigate = useNavigate();
     
+    //fetches the job with specified id to update
     useEffect (()=>{
     fetch (`/api/job/${_id}`)
         .then(res=> res.json())
@@ -22,7 +24,7 @@ const UpdateForm = () => {
         }  }
         )
     },[])
-
+    //set the value of state on form submission
     const handleChange = (value, key) => {
         setUpdateJob({
             ...updatejob,

@@ -4,6 +4,7 @@ import Header from "./Header";
 import styled from "styled-components";
 import ScrollButton from "./ScrollButton";
 
+//array of object to display questions(title) and answer(content)
 const data = {
     title: "FAQ (Frequently Asked Questions)",
     rows: [
@@ -69,7 +70,7 @@ const data = {
         },
     ],
 };
-
+//little styling for title 
 const styles = {
     titleTextColor: '#480987',
     rowTitleColor: 'blue',
@@ -85,6 +86,7 @@ const config = {
     expandIcon: "+",
     collapseIcon: "-",
 };
+//returns the question and answer for the FAQ page
 const FAQ = () => {
     return (
         <Div>
