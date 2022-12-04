@@ -15,26 +15,10 @@ const{deleteJob} = require('./handler/deleteJob');
 const{updateJob} = require('./handler/updateJob');
 const{getJobById} = require('./handler/getJobById');
 const{getAllUserJobs} = require('./handler/getAllUserJobs');
-// const{getTodayJobs} = require('./handler/getTodayJobs');
 const{getUserJobById} = require('./handler/getUserJobById');
-// console.log("usernme", process.env.USERNAME)
-// console.log("password", process.env.PASSWORD)
+const{getTotalCount} = require('./handler/getTotalCount');
+const{getCountOfJobByUser} = require('./handler/getCountOfJobByUser');
 
-// const contactEmail = nodemailer.createTransport({
-//   service: 'gmail',
-//   auth: {
-//     user: process.env.USERNAME,
-//     pass: process.env.PASSWORD,
-//   },
-// });
-
-// contactEmail.verify((error) => {
-//   if (error) {
-//     console.log(error);
-//   } else {
-//     console.log("Ready to Send");
-//   }
-// })
 const port = 8000;
 express()
 .use(express.json())
@@ -59,36 +43,15 @@ express()
 .delete('/api/jobs/:_id', deleteJob)
 .patch('/api/job/:_id', updateJob)
 .get('/api/job/:_id', getJobById)
+.get('/api/totalcount',getTotalCount)
+.get('/api/countbyuser',getCountOfJobByUser)
 
 //user endpoints
 .get('/api/jobs', getAllUserJobs)
-// .get('/api/todayjobs', getTodayJobs)
 .get('/api/userjob/:_id', getUserJobById)
 
 
 
-// .post("/contact", (req, res) => {
-//   const name = req.body.name;
-//   const email = req.body.email;
-//   const message = req.body.message; 
-//   const mail = {
-//     from: name,
-//     to: "***************@gmail.com",
-//     subject: "Contact Form Submission",
-//     html: `<p>Name: ${name}</p>
-//            <p>Email: ${email}</p>
-//            <p>Message: ${message}</p>`,
-//   };
-//   contactEmail.sendMail(mail, (error) => {
-//     if (error) {
-//       res.json({ status: "ERROR" });
-//     } else {
-//       res.json({ status: "Message Sent" });
-//     }
-//   });
-// })
-
 .listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
 }); 
 

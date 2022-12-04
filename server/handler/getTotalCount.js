@@ -14,15 +14,14 @@ const options = {
 
   const client = new MongoClient(MONGO_URI, options);
   
-const getJobById = async(req, res) => {
-    const {_id} = req.params;
-
+const getTotalCount = async(req, res) => {
+    
     try{
       await client.connect();
       const db = client.db("final-project");
- 
-            const onejob = await db.collection("jobs").findOne({_id:_id});
-            res.status(200).json({ status: 200, data:onejob})
+    
+            const total = await db.collection("jobs").find().count();
+            res.status(200).json({ status: 200, data:total})
        
 
   } catch(err){
@@ -34,4 +33,4 @@ const getJobById = async(req, res) => {
   } 
 };
 
-module.exports = { getJobById };
+module.exports = { getTotalCount };

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "./images/montreal-walking-logo.png";
 import SocialMediaIcon from "./SocialMediaIcon";
 
-const Footer = () => {
+const Footer1 = () => {
     return (
         <Div>
             <div>
@@ -16,11 +16,12 @@ const Footer = () => {
             </div>
             <div>
             <Ul>
-                    <Link1 to={"/user"}><img src ={logo} alt="Logo not found"/></Link1>
-                    <Link1 to={"/alljobs"}>All Jobs</Link1>
-                    <Link1 to={"/todayjobs"}>Today's Jobs</Link1>
-                    <Link1 to={"/faq"}>FAQ</Link1>
-                    <Link1 to={"/contact"}>Contact Us</Link1>
+                    <Link1 to={"/recuiter"}><img src ={logo} alt="Logo not found"/></Link1>
+                    <Link1 to={"/adminalljobs"}>All Jobs</Link1>
+                    <Link1 to={"/form"}>Add jobs</Link1>
+                    <Link1 to={"/profile"}>Profile</Link1>
+                    <Link1 to={"/logout"}>Logout</Link1>
+                    {/* <Link1 to={"/contact"}>Contact Us</Link1> */}
                 </Ul>
             </div>
             
@@ -76,4 +77,4 @@ const Link1 = styled(Link)`
         }
     }
  `;
-export default Footer;
+export default Footer1;

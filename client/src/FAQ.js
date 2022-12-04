@@ -95,8 +95,9 @@ const FAQ = () => {
                 styles={styles}
                 config={config}
             />
-            <ScrollButton/>
+           
             </Wrapper>
+            <ScrollButton/>
             <Footer/>
             
         </Div>

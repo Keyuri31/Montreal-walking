@@ -1,32 +1,29 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+import Header1 from "./Header1";
+import ScrollButton from "./ScrollButton";
+import Footer1 from "./Footer1";
 
 const UpdateForm = () => {
     const {_id} = useParams();
     const [updatejob, setUpdateJob] = useState(null);
     const navigate = useNavigate();
-    console.log("updateform id", _id)
     
     useEffect (()=>{
-        console.log("test")
     fetch (`/api/job/${_id}`)
         .then(res=> res.json())
         .then(data=> {
           if(data.status === 400 || data.status === 500){
-            // navigate('/error');
             throw new Error(data.message);
         }   
         else{
-          console.log("uodate datataaaa",data.data)
           setUpdateJob(data.data)
-          // setProfile(data.data); 
         }  }
         )
     },[])
 
     const handleChange = (value, key) => {
-        console.log("value of form",value)
         setUpdateJob({
             ...updatejob,
             [key]: value
@@ -35,7 +32,6 @@ const UpdateForm = () => {
 
 //function to handle submitting the form 
     const handleSubmit = (e) => {
-        console.log("form data", updatejob)
         e.preventDefault();
         fetch(`/api/job/${_id}`, {
             method: "PATCH",
@@ -47,7 +43,6 @@ const UpdateForm = () => {
         })
         .then(res => res.json())
         .then((data) => {
-            console.log("data from form",data)
         })
         .catch((error) => {
             window.alert(error);
@@ -56,11 +51,11 @@ const UpdateForm = () => {
     }
 
     return (<>
-    <h1>Helooo...</h1>
-    <div>
-        {/* {updatejob.length != 0  && */}
-        {console.log("update job", updatejob)}
+    <Header1 />
+    <Div>
         {updatejob &&
+            <>
+                <Title>Update details</Title>
             <Form onSubmit={(e) => {handleSubmit(e)}}>
             <InputDiv>
                 <Label htmlFor="loginemail">Login Email: </Label>
@@ -134,41 +129,58 @@ const UpdateForm = () => {
                 <Add type="submit">Add</Add>
                 </div>
             </Form>
+            </>     
+            } 
+            </Div>
+            <ScrollButton/>
+            <Footer1 />
+    </>
+    
+    );
 }
-
-            </div>
-    </>);
-}
- 
+const Title = styled.h2`
+font-size:38px;
+font-family:Times New Roman;
+text-align:center;
+color:#480987;
+border:5px solid #ff8000;
+width:50%;
+margin:0 25%;;
+`;
+const Div = styled.div`
+height:82vh;
+    width:60%;
+    margin:0 20%;
+    border:1px solid black;
+    background:white;
+    padding:20px;
+    padding-bottom:20px;
+`;
 const Add = styled.button`
-background-color: black;
-border: none;
-padding: 10px;
-border-radius: 5px;
-width: 150px;
-color: white;
-font-family: 'Times New Roman', Times, serif;
-box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-letter-spacing: 5px;
-margin-top: 30px;
-&:hover:enabled {
-    cursor: pointer;
-    transition: all 0.5s ease;
-    transform: scale(1.05);
-    background-color: purple;
-}
-&:disabled {
-    opacity: 30%;
-    cursor: not-allowed;
-}
-&:active:enabled {
-    transition: all 0.5s ease;
-    transform: scale(1);
-}
+display:flex;
+    justify-content: center;
+    background-color: #ff8000;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 150px;
+    color: white;
+    font-weight:bold;
+    font-size:15px;
+    font-family: 'Times New Roman', Times, serif;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    letter-spacing: 5px;
+    margin-top: 20px;
+    margin-bottom:10px;
+    &:hover:enabled {
+        cursor: pointer;
+        transition: all 0.5s ease;
+        transform: scale(1.05);
+        background-color: white;
+        color:#400080;
+        font-weignt:bold;
+    }
 `
-
-const Wrapper = styled.div``
-
 const InputDiv = styled.div`
     margin-top:10px;
 `
@@ -176,6 +188,7 @@ const InputDiv = styled.div`
 const Form = styled.form`
 display: flex;
 flex-direction: column;
+
 .buttonDiv {
     width: 400px;
     display: flex;

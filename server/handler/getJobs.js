@@ -16,18 +16,14 @@ const options = {
   
 const getJobs = async(req, res) => {
     const {loginemail} = req.params;
-  console.log("loginemail", loginemail)
+
     try{
       await client.connect();
       const db = client.db("final-project");
     
-    //   const findone = await db.collection("jobs").findOne({loginemail:loginemail});
-    //   console.log(findone)
-
-
             const alljobs = await db.collection("jobs").find({loginemail:loginemail}).toArray();
-            // console.log(alljobs)
-            res.status(200).json({ status: 200, data:alljobs})
+            const total = await db.collection("jobs").find({loginemail:loginemail}).count();
+            res.status(200).json({ status: 200, data:alljobs,total})
        
 
   } catch(err){

@@ -16,13 +16,13 @@ const options = {
   
 const deleteJob = async(req, res) => {
     const {_id} = req.params;
-    console.log(_id)
+  
     try{
       await client.connect();
       const db = client.db("final-project");
     
       const findone = await db.collection("jobs").findOne({_id:_id});
-      console.log(findone)
+      
         const deleteone = await db.collection("jobs").deleteOne({_id:_id})
             res.status(200).json({ status: 200, data:deleteone})
        

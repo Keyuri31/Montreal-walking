@@ -1,6 +1,3 @@
-
-"use strict";
-
 const { MongoClient } = require("mongodb");
 
 //access the database
@@ -15,7 +12,6 @@ const options = {
   const client = new MongoClient(MONGO_URI, options);
   
 const login = async(req, res) => {
-    console.log(req.body)
     const {user,type} = req.body;
     console.log(user.email)
     console.log(type)

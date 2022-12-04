@@ -1,30 +1,23 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import { useState, useEffect } from "react";
-import {useNavigate, useParams } from "react-router-dom";
-import Header from "./Header";
-import { Link } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
+import Footer1 from "./Footer1";
+import Header1 from "./Header1";
+import ScrollButton from "./ScrollButton";
 import Spinner from "./Spinner";
-import Logout from "./Logout";
-import UpdateForm from "./UpdateForm";
+import styled from "styled-components";
 
 const Profile = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated} = useAuth0();
   const[state, setState] = useState("");
-  // const userEmail = user.email;
-  // const currentloginemail = user.email;
-  const{updateId} = useParams();
   const navigate = useNavigate();
-console.log("user", user)
-console.log("authne", isAuthenticated)
 
   useEffect(()=>{
     isAuthenticated && 
-    console.log("userEmail",user.email)
     fetch (`/api/jobs/${user.email}`)
       .then(res=> res.json())
       .then((data)=>{
-        console.log(data.data);
         setState(data.data)
       })
   },[isAuthenticated])
@@ -40,39 +33,20 @@ console.log("authne", isAuthenticated)
             window.alert("Successfully deleted")
       })
   })
-
-  const handleSubmit1 = ((e,id,data) =>{
+  const handleSubmit1 = ((e,id) => {
     e.preventDefault();
-    console.log("updateid", id)
-    console.log("updatedata", data)
-
-      // 
-
-    // navigate('/form');
-    // fetch(`/api/job/${updateId}`, {
-    //   method: "PATCH",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //       console.log("datattaaa",data)
-    //   })
-    //   .catch((err) => console.log(err));
-  
+    navigate(`/updateform/${id}`);
   })
-  // console.log("state", state)
   return (
      <>
+     <Header1/>
     {isAuthenticated && (
-      <div>
-        <img src={user.picture} alt={user.name} />
-        <h2>{user.name}</h2>
-        <p>{user.email}</p>
-
+      <Div>
+        <User>
+          <img src={user.picture} alt={user.name} />
+          <Title>Username: <Span>{user.name}</Span></Title>
+          <Title>Email: <Span>{user.email}</Span></Title>
+        </User>
         <table border="2">
           <tr>
             <th>Sr No.</th>
@@ -95,14 +69,10 @@ console.log("authne", isAuthenticated)
         
         {!state ? 
         <Spinner/>
-        // <h1>Loading...</h1> 
         : 
           state && state.map((item,index) => {
             return(
             <>
-            {console.log("item", item)}
-             {/* {console.log("company",item.companyName)} */}
-              {/* <p>Company name: {item.companyName}</p> */}
               <tr>
                 <td key={index+1}>{index+1}</td>
                 <td>{item._id}</td>
@@ -114,15 +84,11 @@ console.log("authne", isAuthenticated)
                 <td>{item.jobTitle}</td>
                 <td>{item.description}</td>
                 <td><span>{item.jobType.fulltime}</span><br></br><span>{item.jobType.permanent}</span><br></br><span>{item.jobType.parttime}</span><br></br><span>{item.jobType.temporary}</span></td>
-                {/* <td>{if(item.fulltime === item.fulltime){return item.fulltime}}</td> */}
                 <td>{item.salary}</td>
                 <td><span>{item.benefits.weekend}</span><br></br><span>{item.benefits.overtime}</span><br></br><span>{item.benefits.extrahours}</span></td>
                 <td>{item.date}</td>
                 <td>{item.howToApply}</td>
-                <td><Link to={`/updateform/${item._id}`}>UPDATE</Link></td>
-                {/* <td><button onClick={<UpdateForm id={item._id} data={item}/>}>UPDATE</button></td> */}
-                {/* <td><button onClick={e=>handleSubmit1(e,item._id,item)}>UPDATE</button></td> */}
-                {/* <td>DELETE</td> */}
+                <td><button onClick={e=>handleSubmit1(e,item._id)}>UPDATE</button></td>
                 <td><button onClick={e=>handleSubmit(e,item._id)}>DELETE</button></td>
               </tr>
             </>
@@ -131,10 +97,47 @@ console.log("authne", isAuthenticated)
         }
         </table>
         
-        </div>
+        </Div>
     )}
+    <ScrollButton/>
+    <Footer1/>
     </>
   )
 }
-
+const Div = styled.div`
+button{
+  display:flex;
+  justify-content: center;
+  background-color: #ff8000;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  width: 70px;
+  color: white;
+  font-weight:bold;
+  font-size:15px;
+  font-family: 'Times New Roman';
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 1px 0px;
+  // letter-spacing: 5px;
+  margin-top: 40px;
+  margin-bottom:10px;
+  &:hover:enabled {
+      cursor: pointer;
+      background-color: white;
+      color:#400080;
+      font-weight:bold;
+  } 
+}
+`;
+const Title = styled.p`
+  font-size:20px;
+`;
+const Span = styled.span`
+  font-style:italic;
+`;
+const User = styled.div`
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+`;
 export default Profile;

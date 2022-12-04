@@ -7,7 +7,6 @@ import ScrollButton from "./ScrollButton";
 
 const JobDetail = () => {
     const {_id}  = useParams();
-    console.log("params id", _id)
     const [state, setState] = useState(null);
      
     useEffect(()=>{
@@ -15,47 +14,19 @@ const JobDetail = () => {
           .then(res=> res.json())
           .then(data=> {
             if(data.status === 400 || DataTransfer.status === 500){
-            //   navigate('/error');
                 throw new Error(data.message);
             }   
             else{
-            console.log(data)
             setState(data); 
-            }
-        }
+            }}
             )
             .catch((error) =>{
                 window.alert(error);
-            //    navigate('/error');
              })
-         
-      }, [])
-
-      const handleSubmit = ((e, state) => {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log("handlesubmit state data", state)
-        // fetch("/api/myjob", {
-        //     method: "POST",
-        //     headers: {
-        //         "Accept": "application/json",
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify(state)
-        // })
-        // .then(res => res.json())
-        // .then((data) => {
-        //     console.log("data from state",data)
-        // })
-        // .catch((error) => {
-        //     window.alert(error);
-        // })
-
-      })
-
+      },[])
+      
     return (
         <div>
-            {console.log("state", state)}
             <Header/>
             {state &&
             <div>
@@ -92,6 +63,7 @@ const JobDetail = () => {
             </Body>
              </div>               
             }
+            <ScrollButton/>
             <Footer/>
                         </div>
     );

@@ -19,11 +19,7 @@ const onLoad = (info) => {
 };
 
 const Map = ({alljobs, setAlljobs}) => {
-  const [show, setShow] = useState(false);
   const [selectedMarker, setSelectedMarker] = useState([]);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const [state, setState] = useState('');
   const [state1, setState1] = useState([]);
 
   //USER LOCATION
@@ -37,11 +33,9 @@ const Map = ({alljobs, setAlljobs}) => {
       .then(res=> res.json())
       .then(data=> {
         if(data.status === 400 || data.status === 500){
-        //   navigate('/error');
           throw new Error(data.message);
       }   
       else{
-        // console.log(data)
         setState1(data.data); 
       }  })
   }, [])

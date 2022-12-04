@@ -20,12 +20,8 @@ const getAllUserJobs = async(req, res) => {
       await client.connect();
       const db = client.db("final-project");
     
-    //   const findone = await db.collection("jobs").findOne({loginemail:loginemail});
-    //   console.log(findone)
-
-
             const alljobs = await db.collection("jobs").find().toArray();
-            // console.log(alljobs)
+         
             return res.status(200).json({ status: 200, data:alljobs})
        
 

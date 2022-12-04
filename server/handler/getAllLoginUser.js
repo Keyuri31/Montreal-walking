@@ -22,7 +22,7 @@ const getAllLoginUser = async(req, res) => {
     
        
             const allUser = await db.collection("login").find().toArray();
-            console.log(allUser)
+            
             res.status(200).json({ status: 200, data:allUser})
        
 

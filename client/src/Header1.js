@@ -9,9 +9,10 @@ const Header1 = () => {
         
         <>
             <Header2>
-                <Link1 to="/user"><img src ={logo} alt="Logo not found"/></Link1>
+                <Link1 to="/recuiter"><img src ={logo} alt="Logo not found"/></Link1>
                 {isAuthenticated &&
                 <Div>
+                    <Link2 to={"/adminalljobs"}>All jobs</Link2>
                     <Link2 to={"/form"}>Add Job</Link2>
                     <Link2 to={"/profile"}>Profile</Link2>
                     <Link2 to="/logout">Logout</Link2>
@@ -32,7 +33,7 @@ border-bottom:4px solid #ff8000;
 
 div{
     margin-top:-70px;
-    margin-left:900px;
+    margin-left:750px;
 }
 `;
 const Link1 = styled(Link)`
@@ -43,7 +44,7 @@ margin-left:20px;
 
 img{
     width:15%;
-    height:100px;
+    height:90px;
     margin-left:40px;
 }
 `;

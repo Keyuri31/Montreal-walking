@@ -16,9 +16,10 @@ import FAQ from "./FAQ";
 import ContactUs from "./ContactUs";
 import Sidebar from "./Sidebar";
 import Resume from "./Resume";
+import AdminAllJobs from "./AdminAllJobs";
 
 const App = () => {
-  const {user,isAuthenticated} = useAuth0();
+  const {isAuthenticated} = useAuth0();
 
   return (
    <>
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/form" element={<JobPostForm />}/>
         <Route path="/logout" element= {<Logout />}/>
         <Route path="/updateform/:_id" element={<UpdateForm/>}/>
+        <Route path="/adminalljobs" element={<AdminAllJobs />}/>
         
             <Route path="/alljobs" element={<AllJobs />}/>
             <Route path="/resume" element={<Resume />}/>
