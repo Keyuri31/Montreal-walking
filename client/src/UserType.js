@@ -9,6 +9,7 @@ const UserType = () => {
     const navigate = useNavigate();
 
     const handleChange = (value) => {
+        console.log("value", value)
         setType(value);
 }
     //post their usertype to the db
@@ -44,11 +45,11 @@ const UserType = () => {
             <form onSubmit={e=>handleSubmit(e)}>
                 <First>
                     <Second>
-                        <input type="radio" name="usertype" value={type} onChange={(e)=>{handleChange(e.target.name)}}/>
+                        <input type="radio" name="type" value="usertype" onChange={(e)=>{handleChange(e.target.value)}}/>
                         <label htmlFor="name">Job Seeker</label>
                     </Second>
                     <Second>
-                        <input type="radio" name="recuitertype" value={type} onChange={(e)=>{handleChange(e.target.name)}}/>
+                        <input type="radio" name="type" value="recuitertype" onChange={(e)=>{handleChange(e.target.value)}}/>
                         <label htmlFor="name">Recuiter</label>
                     </Second>
                 </First>
