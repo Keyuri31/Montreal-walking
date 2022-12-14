@@ -4,7 +4,8 @@ import {
     faFacebook,
     faTwitter,
     faInstagram,
-    faLinkedin
+    faLinkedin,
+    faGithub
   } from "@fortawesome/free-brands-svg-icons";
 import styled from "styled-components";
 
@@ -16,14 +17,14 @@ const SocialMediaIcon = () => {
         className="youtube social">
         <FontAwesomeIcon icon={faYoutube} size="2x" />
       </a>
-      <a href="https://www.facebook.com"
+      <a href="https://github.com/Keyuri31/Montreal-walking"
         className="facebook social">
-        <FontAwesomeIcon icon={faFacebook} size="2x" />
+        <FontAwesomeIcon icon={faGithub} size="2x" />
       </a>
       <a href="https://www.twitter.com" className="twitter social">
         <FontAwesomeIcon icon={faTwitter} size="2x" />
       </a>
-      <a href="https://www.linkedin.com"
+      <a href="https://www.linkedin.com/in/keyuripatel31/"
         className="instagram social">
         <FontAwesomeIcon icon={faLinkedin} size="2x" />
       </a>

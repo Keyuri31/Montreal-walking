@@ -25,6 +25,7 @@ const Footer = () => {
                     <Link1 to={"/todayjobs"}>Today's Jobs</Link1>
                     <Link1 to={"/faq"}>FAQ</Link1>
                     <Link1 to={"/contact"}>Contact Us</Link1>
+                    <Link1 to={"/logout"}>Logout</Link1>
                 </Ul>
             </div>
             
@@ -46,7 +47,7 @@ const Link1 = styled(Link)`
     img{
     margin-left:-20px;
         width:50%;
-        height:25%;
+        height:23%;
     }
     &:hover{
         color:#ff8000;
@@ -54,7 +55,7 @@ const Link1 = styled(Link)`
 `;
  const Div = styled.div`
     width:100%;
-    height:30vh;
+    height:33vh;
     border-top:5px solid #ff8000;
     background-color: #480987;
     display:flex;

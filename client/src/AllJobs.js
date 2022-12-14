@@ -56,7 +56,10 @@ const AllJobs = () => {
                         <Div key={index+1} >
                             <p><span>Company Name:</span> {item.companyName}</p>
                             <p><span>Address:</span> {item.address}</p>
-                            <p><span>Email:</span> {item.email}</p>
+                            <p>
+                                <span>Email:</span> 
+                                <a href={`mailto:${item.email}`}> {item.email}</a>
+                            </p>
                             <hr></hr>
                             <p><span>Job Title:</span> {item.jobTitle}</p>
                             {/* <p><span>Detail:</span> {item.description}</p> */}

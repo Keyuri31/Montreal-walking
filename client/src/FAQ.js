@@ -9,64 +9,54 @@ const data = {
     title: "FAQ (Frequently Asked Questions)",
     rows: [
         {
-            title: "Lorem ipsum dolor sit amet,",
-            content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed tempor sem. Aenean vel turpis feugiat,
-              ultricies metus at, consequat velit. Curabitur est nibh, varius in tellus nec, mattis pulvinar metus.
-              In maximus cursus lorem, nec laoreet velit eleifend vel. Ut aliquet mauris tortor, sed egestas libero interdum vitae.
-              Fusce sed commodo purus, at tempus turpis.`,
+            title: "What is Montreal Walking?",
+            content: `It is a platform where the job seeker can create an account and find there their dream job. They can also find the job through maps. They can select the pin on the google map to get the details of the job that suits them. Also, it is a platform where the recuiters can post their requirements and help the people in finding the jobs.`,
               
         },
         {
-            title: "Nunc maximus, magna at ultricies elementum",
-            content:
-                "Nunc maximus, magna at ultricies elementum, risus turpis vulputate quam, vitae convallis ex tortor sed dolor.",
-        },
-        {
-            title: "Curabitur laoreet, mauris vel blandit fringilla",
-            content: `Curabitur laoreet, mauris vel blandit fringilla, leo elit rhoncus nunc, ac sagittis leo elit vel lorem.
-            Fusce tempor lacus ut libero posuere viverra. Nunc velit dolor, tincidunt at varius vel, laoreet vel quam.
-            Sed dolor urna, lobortis in arcu auctor, tincidunt mattis ante. Vivamus venenatis ultricies nibh in volutpat.
-            Cras eu metus quis leo vestibulum feugiat nec sagittis lacus.Mauris vulputate arcu sed massa euismod dignissim. `,
-        },
-        {
-            title: "What is the package version",
-            content: <p>current version is 1.2.1</p>,
-        },
-        {
-            title: "Lorem ipsum dolor sit amet,",
-            content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed tempor sem. Aenean vel turpis feugiat,
-              ultricies metus at, consequat velit. Curabitur est nibh, varius in tellus nec, mattis pulvinar metus.
-              In maximus cursus lorem, nec laoreet velit eleifend vel. Ut aliquet mauris tortor, sed egestas libero interdum vitae.
-              Fusce sed commodo purus, at tempus turpis.`,
+            title: "Is my account secure?",
+            content: `It is a platform where the job seeker can create an account and find there their dream job. They can also find the job through maps. They can select the pin on the google map to get the details of the job that suits them. Also, it is a platform where the recuiters can post their requirements and help the people in finding the jobs.`,
               
         },
         {
-            title: "Nunc maximus, magna at ultricies elementum",
+            title: "What's the best part of this website?",
             content:
-                "Nunc maximus, magna at ultricies elementum, risus turpis vulputate quam, vitae convallis ex tortor sed dolor.",
+                "It's easy to find the jobs because it shows you a location in the map.",
         },
         {
-            title: "Curabitur laoreet, mauris vel blandit fringilla",
-            content: `Curabitur laoreet, mauris vel blandit fringilla, leo elit rhoncus nunc, ac sagittis leo elit vel lorem.
-            Fusce tempor lacus ut libero posuere viverra. Nunc velit dolor, tincidunt at varius vel, laoreet vel quam.
-            Sed dolor urna, lobortis in arcu auctor, tincidunt mattis ante. Vivamus venenatis ultricies nibh in volutpat.
-            Cras eu metus quis leo vestibulum feugiat nec sagittis lacus.Mauris vulputate arcu sed massa euismod dignissim. `,
+            title: "What types of jobs are posted?",
+            content: `On this site, the job posted are less professional and that require less technical knowledge. They can schedule the job according to their other schedules. That gives you flexibilty in work.`,
         },
         {
-            title: "Nunc maximus, magna at ultricies elementum",
+            title: "What is the salary package?",
+            content: "The salary ranges from minimum to 30$ per hour. Also, some jobs gives you an opportunity to work more hours than usual as well as provides some benefits.",
+        },
+        {
+            title: "How to use it?",
+            content: `It is a platform where the job seeker can create an account and find there their dream job. They can also find the job through maps. They can select the pin on the google map to get the details of the job that suits them. Also, it is a platform where the recuiters can post their requirements and help the people in finding the jobs.`,
+              
+        },
+        {
+            title: "How can I apply from this site?",
             content:
-                "Nunc maximus, magna at ultricies elementum, risus turpis vulputate quam, vitae convallis ex tortor sed dolor.",
+                "It's easy to find the jobs because it shows you a location in the map.",
         },
         {
-            title: "Curabitur laoreet, mauris vel blandit fringilla",
-            content: `Curabitur laoreet, mauris vel blandit fringilla, leo elit rhoncus nunc, ac sagittis leo elit vel lorem.
-            Fusce tempor lacus ut libero posuere viverra. Nunc velit dolor, tincidunt at varius vel, laoreet vel quam.
-            Sed dolor urna, lobortis in arcu auctor, tincidunt mattis ante. Vivamus venenatis ultricies nibh in volutpat.
-            Cras eu metus quis leo vestibulum feugiat nec sagittis lacus.Mauris vulputate arcu sed massa euismod dignissim. `,
+            title: "How does it help you?",
+            content: `On this site, the job posted are less professional and that require less technical knowledge. They can schedule the job according to their other schedules. That gives you flexibilty in work.`,
         },
         {
-            title: "What is the package version",
-            content: <p>current version is 1.2.1</p>,
+            title: "What's the purpose?",
+            content: "The salary ranges from minimum to 30$ per hour. Also, some jobs gives you an opportunity to work more hours than usual as well as provides some benefits.",
+        },
+        {
+            title: "How can I keep my account secure?",
+            content: `It is a platform where the job seeker can create an account and find there their dream job. They can also find the job through maps. They can select the pin on the google map to get the details of the job that suits them. Also, it is a platform where the recuiters can post their requirements and help the people in finding the jobs.`,
+              
+        },
+        {
+            title: "What is the salary package?",
+            content: "The salary ranges from minimum to 30$ per hour. Also, some jobs gives you an opportunity to work more hours than usual as well as provides some benefits.",
         },
     ],
 };

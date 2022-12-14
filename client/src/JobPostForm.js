@@ -29,6 +29,7 @@ const JobPostForm = () => {
         })
         .then(res => res.json())
         .then((data) => {
+            console.log("data from form",data)
         })
         .catch((error) => {
             window.alert(error);
@@ -164,6 +165,9 @@ display:flex;
         font-weignt:bold;
     }
 `
+
+const Wrapper = styled.div``
+
 const InputDiv = styled.div`
     margin-top:10px;
 `

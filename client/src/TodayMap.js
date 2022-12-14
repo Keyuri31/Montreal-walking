@@ -85,7 +85,7 @@ const TodayMap = ({today, setToday}) => {
                         <StyledBox> 
                           <h3><span>Name</span>: {location.companyName}</h3>
                           <h3><span>Address</span>: {location.address}</h3>
-                          <h3><span>Email</span>: <a href="">{location.email}</a></h3>
+                          <h3><span>Email</span>: <a href={`mailto:${location.email}`}>{location.email}</a></h3>
                           <h3><span>Contact No.</span>: <a href={`tel:${location.number}`}>{location.number}</a></h3>
                         </StyledBox>
                       </InfoWindow>

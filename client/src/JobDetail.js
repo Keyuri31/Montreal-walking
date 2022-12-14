@@ -38,7 +38,7 @@ const JobDetail = () => {
                             <Title>Company Details</Title>
                             <p><span>Company Name:</span> {state.data.companyName}</p>
                             <p><span>Address:</span> {state.data.address}</p>
-                            <p><span>Email:</span> <a href="">{state.data.email}</a></p>
+                            <p><span>Email:</span> <a href={`mailto:${state.data.email}`}>{state.data.email}</a></p>
                             <p><span>Contact No.:</span> <a href={`tel:${state.data.number}`}>{state.data.number}</a></p>
                             {/* <button onClick={e => handleSubmit(e, state)}>LIKE</button> */}
                             </div>
