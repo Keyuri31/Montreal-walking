@@ -1,2 +1,2 @@
 # Montreal-walking
-<h1>Welcome to MONTREAL WALKING</h1>
+<h1>Welcome to <i>MONTREAL WALKING</i></h1>
