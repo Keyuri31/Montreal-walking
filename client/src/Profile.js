@@ -130,6 +130,19 @@ button{
       font-weight:bold;
   } 
 }
+table{
+  background-color:white;
+  margin:20px;
+
+  th{
+    text-align:center;
+  }
+
+  td{
+    text-align:center;
+  }
+  tr:nth-child(even) {background-color: #f2f2f2;}
+}
 `;
 const Title = styled.p`
   font-size:20px;
@@ -141,5 +154,7 @@ const User = styled.div`
   display:flex;
   flex-direction: column;
   align-items: center;
+  margin:10px;
+  font-weight:bold;
 `;
 export default Profile;

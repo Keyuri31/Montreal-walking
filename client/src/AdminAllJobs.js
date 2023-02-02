@@ -87,7 +87,18 @@ const AdminAllJobs = () => {
 const Div = styled.div`
     table{
         background-color:white;
+        margin:20px;
+
+        th{
+          text-align:center;
+        }
+
+        td{
+          text-align:center;
+        }
+        tr:nth-child(even) {background-color: #f2f2f2;}
     }
+    
 `;
 const Title = styled.h2`
 font-size:38px;
@@ -96,6 +107,6 @@ text-align:center;
 color:#480987;
 border:5px solid #ff8000;
 width:50%;
-margin:0 25%;;
+margin:10px 25%;;
 `;
 export default AdminAllJobs;

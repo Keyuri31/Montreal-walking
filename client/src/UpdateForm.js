@@ -152,14 +152,14 @@ margin:0 25%;;
 const Div = styled.div`
 height:82vh;
     width:60%;
-    margin:0 20%;
+    margin:10px 20%;
     border:1px solid black;
     background:white;
     padding:20px;
     padding-bottom:20px;
 `;
 const Add = styled.button`
-display:flex;
+    display:flex;
     justify-content: center;
     background-color: #ff8000;
     border: none;
@@ -172,8 +172,7 @@ display:flex;
     font-family: 'Times New Roman', Times, serif;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     letter-spacing: 5px;
-    margin-top: 20px;
-    margin-bottom:10px;
+    margin:20px;
     &:hover:enabled {
         cursor: pointer;
         transition: all 0.5s ease;
@@ -190,11 +189,13 @@ const InputDiv = styled.div`
 const Form = styled.form`
 display: flex;
 flex-direction: column;
+padding-bottom:10px;
 
 .buttonDiv {
     width: 400px;
     display: flex;
     justify-content: center;
+    margin-bottom:10px;
 }
 `
 
