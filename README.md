@@ -8,3 +8,4 @@ convenient and provide schedule flexibility.<br>
 jobs that best suit them.<br><br>
 <b>Technologies:</b> React.js, HTML, CSS, JavaScript ES6, Node.js, Express, MongoDB<br>
 <b>External API’s:</b> Google Maps and Auth0</p>
+<h3 style="float:center">Thank you</h3>
