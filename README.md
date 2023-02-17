@@ -1,5 +1,5 @@
 # Montreal-walking
-<h1>Welcome to <i style="color:red">MONTREAL WALKING</i></h1>
+<h1>Welcome to <i align="center">MONTREAL WALKING</i></h1>
 <p>• This project is for small business who have difficulty filling job vacancies.<br>
 • Suitable for students and a seniors who are seeking employment in jobs that are less technical,
 convenient and provide schedule flexibility.<br>
