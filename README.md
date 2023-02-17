@@ -1,4 +1,4 @@
-# Montreal-walking
+
 <h1 align="center">Welcome to <i>MONTREAL WALKING</i></h1>
 <p>• This project is for small business who have difficulty filling job vacancies.<br>
 • Suitable for students and a seniors who are seeking employment in jobs that are less technical,
